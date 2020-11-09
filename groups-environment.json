@@ -1,0 +1,32 @@
+{
+    "groups": [
+        {
+            "expression": [
+                {
+                    "member_type": "VirtualMachine",
+                    "key": "Tag",
+                    "operator": "EQUALS",
+                    "value": "Environment|Development",
+                    "resource_type": "Condition"
+                }
+            ],
+            "resource_type": "Group",
+            "id": "Development_Apps",
+            "display_name": "Development Apps"
+        },
+        {
+            "expression": [
+                {
+                    "member_type": "VirtualMachine",
+                    "key": "Tag",
+                    "operator": "EQUALS",
+                    "value": "Environment|Production",
+                    "resource_type": "Condition"
+                }
+            ],
+            "resource_type": "Group",
+            "id": "Production_Apps",
+            "display_name": "Production Apps"
+        }
+    ]
+}

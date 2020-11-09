@@ -1,0 +1,124 @@
+{
+    "groups": [
+        {
+            "expression": [
+                {
+                    "expressions": [
+                        {
+                            "member_type": "VirtualMachine",
+                            "key": "Tag",
+                            "operator": "EQUALS",
+                            "value": "Application|App-1",
+                            "resource_type": "Condition"
+                        },
+                        {
+                            "conjunction_operator": "AND",
+                            "resource_type": "ConjunctionOperator"
+                        },
+                        {
+                            "member_type": "VirtualMachine",
+                            "key": "Tag",
+                            "operator": "EQUALS",
+                            "value": "Tier|App-Tier",
+                            "resource_type": "Condition"
+                        }
+                    ],
+                    "resource_type": "NestedExpression"
+                }
+            ],
+            "resource_type": "Group",
+            "id": "App1-App",
+            "display_name": "App1-App"
+        },
+        {
+            "expression": [
+                {
+                    "expressions": [
+                        {
+                            "member_type": "VirtualMachine",
+                            "key": "Tag",
+                            "operator": "EQUALS",
+                            "value": "Application|App-1",
+                            "resource_type": "Condition"
+                        },
+                        {
+                            "conjunction_operator": "AND",
+                            "resource_type": "ConjunctionOperator"
+                        },
+                        {
+                            "member_type": "VirtualMachine",
+                            "key": "Tag",
+                            "operator": "EQUALS",
+                            "value": "Tier|Web-Tier",
+                            "resource_type": "Condition"
+                        }
+                    ],
+                    "resource_type": "NestedExpression"
+                }
+            ],
+            "resource_type": "Group",
+            "id": "App1-Web",
+            "display_name": "App1-Web"
+        },
+        {
+            "expression": [
+                {
+                    "expressions": [
+                        {
+                            "member_type": "VirtualMachine",
+                            "key": "Tag",
+                            "operator": "EQUALS",
+                            "value": "Application|App-2",
+                            "resource_type": "Condition"
+                        },
+                        {
+                            "conjunction_operator": "AND",
+                            "resource_type": "ConjunctionOperator"
+                        },
+                        {
+                            "member_type": "VirtualMachine",
+                            "key": "Tag",
+                            "operator": "EQUALS",
+                            "value": "Tier|App-Tier",
+                            "resource_type": "Condition"
+                        }
+                    ],
+                    "resource_type": "NestedExpression"
+                }
+            ],
+            "resource_type": "Group",
+            "id": "App2-App",
+            "display_name": "App2-App"
+        },
+        {
+            "expression": [
+                {
+                    "expressions": [
+                        {
+                            "member_type": "VirtualMachine",
+                            "key": "Tag",
+                            "operator": "EQUALS",
+                            "value": "Application|App-2",
+                            "resource_type": "Condition"
+                        },
+                        {
+                            "conjunction_operator": "AND",
+                            "resource_type": "ConjunctionOperator"
+                        },
+                        {
+                            "member_type": "VirtualMachine",
+                            "key": "Tag",
+                            "operator": "EQUALS",
+                            "value": "Tier|Web-Tier",
+                            "resource_type": "Condition"
+                        }
+                    ],
+                    "resource_type": "NestedExpression"
+                }
+            ],
+            "resource_type": "Group",
+            "id": "App2-Web",
+            "display_name": "App2-Web"
+        }
+    ]
+}

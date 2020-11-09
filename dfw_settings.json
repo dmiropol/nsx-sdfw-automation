@@ -1,0 +1,10 @@
+{
+    "firewall-security": [
+        {
+            "id": "security",
+            "display_name": "security",
+            "resource_type": "DfwFirewallConfiguration",
+            "default_security_posture": "WHITELIST"
+        }
+    ]
+}
