@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 echo "Stopping idps-reporting-service..."
 service idps-reporting-service stop
