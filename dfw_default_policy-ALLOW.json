@@ -1,0 +1,20 @@
+{
+    "security-policies": [
+        {
+            "rules": [
+                {
+                    "action": "ALLOW",
+                    "resource_type": "Rule",
+                    "id": "default-layer3-rule",
+                    "sequence_number": 2147483647,
+                    "display_name": "Default Layer3 Rule"
+                }
+            ],
+            "resource_type": "SecurityPolicy",
+            "id": "default-layer3-section",
+            "display_name": "Default Layer3 Section",
+            "category": "Application",
+            "sequence_number": 14000000
+        }
+    ]
+}
