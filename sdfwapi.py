@@ -14,6 +14,7 @@ class GoTo(Exception):
         self.message = message
         self.errno = errno
 
+
 class mainObj():
     def __init__(self):
         configFile = 'env_profile.json'
@@ -23,7 +24,7 @@ class mainObj():
             self.nsx_user = self.mConfig.get('env').get('nsx_user')
             self.nsx_password = self.mConfig.get('env').get('nsx_password')
 
-            #print ('Using NSX Mgr URL: ', self.nsxmgr)
+            # print ('Using NSX Mgr URL: ', self.nsxmgr)
 
     def __str__(self):
         arr = ['{0} = {1}'.format(key, str(value)) for key, value in self.__dict__.iteritems()]
@@ -47,18 +48,16 @@ class mainObj():
         self.connect()
         self.handle_request(args)
 
-
     def connect(self):
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
         url = self.nsxmgr + '/policy/api/v1/infra/'
-        response = requests.get(url,  verify=False, auth=HTTPBasicAuth(self.nsx_user, self.nsx_password))
+        response = requests.get(url, verify=False, auth=HTTPBasicAuth(self.nsx_user, self.nsx_password))
         if response:
-            json_object = json.loads(response.text)
-            print 'Successfully connected to:', self.nsxmgr + '.\n', \
-                    # 'DFW Connectivity strategy:', json_object.get('connectivity_strategy')
-            #print (json.dumps(json_object, indent=2))
+            #json_object = json.loads(response.text)
+            print('Successfully connected to:', self.nsxmgr + '.\n')
+            #print(json.dumps(json_object, indent=2))
         else:
-            print response.text
+            print(response.text)
             raise GoTo(message='Got Error connecting to: ' + url, errno=1)
 
     def handle_request(self, args):
@@ -74,7 +73,7 @@ class mainObj():
 
     def process_item(self, dfw_template, operation):
         infra = '/policy/api/v1/infra'
-        element = dfw_template.keys()[0]
+        element = next(iter(dfw_template))
         for item in dfw_template.get(element):
             if type(item) == dict:
                 id = item.get('id')
@@ -96,21 +95,25 @@ class mainObj():
                 self.send_request(operation, url, body=item)
 
     def send_request(self, operation, url, body):
-        if operation == 'create':
-            response = requests.patch(url, verify=False, auth=HTTPBasicAuth(self.nsx_user, self.nsx_password), json=body)
+        if operation == 'list':
+            response = requests.get(url, verify=False, auth=HTTPBasicAuth(self.nsx_user, self.nsx_password))
+        elif operation == 'create':
+            response = requests.patch(url, verify=False, auth=HTTPBasicAuth(self.nsx_user, self.nsx_password),
+                                      json=body)
         else:
             response = requests.delete(url, verify=False, auth=HTTPBasicAuth(self.nsx_user, self.nsx_password))
         if response.status_code == 200:
             if len(response.text) == 0:
-                print operation, 'operation on', body.get('display_name'), 'completed successfully.'
-            else: print response.text
+                print(operation, 'operation on', body.get('display_name'), 'completed successfully.')
+            else:
+                print(response.text)
         else:
-            print 'Got error:', response.text
+            print('Got error:', response.text)
 
 
 def main(scriptName, args_list):
     ret_status = 0
-    print 'Running:', scriptName, ' '.join(args_list)
+    print('Running:', scriptName, ' '.join(args_list))
     try:
         with mainObj() as ptr:
             ptr.process(args_list[0:])
@@ -131,6 +134,7 @@ def main(scriptName, args_list):
 
     print("Exit with status {0}".format(ret_status))
     return ret_status
+
 
 if __name__ == "__main__":
     sys.exit(main(os.path.basename(sys.argv[0]), sys.argv[1:]))

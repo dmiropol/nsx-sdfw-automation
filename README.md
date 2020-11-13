@@ -5,7 +5,7 @@ This demo is focusing on service defined firewall and IDS features of NSX-T. Thi
 `sdfwapi.py` is a python script that utilizes NSXT policy API and pre-configured json files to provision distributed firewall policy rules, IDS polices and rules along with necessary security groups and services.
 
 # Requirements
-Unix-based machine running python 2.7+
+Unix-based machine running python 3.8+
 
 # Installation
 Run `install.sh`
