@@ -54,7 +54,7 @@ class mainObj():
         response = requests.get(url, verify=False, auth=HTTPBasicAuth(self.nsx_user, self.nsx_password))
         if response:
             #json_object = json.loads(response.text)
-            print('Successfully connected to:', self.nsxmgr + '.\n')
+            print('Successfully connected to:', self.nsxmgr + '.')
             #print(json.dumps(json_object, indent=2))
         else:
             print(response.text)

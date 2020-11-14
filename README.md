@@ -9,7 +9,6 @@ Unix-based machine running python 3.8+ with pip3
 
 # Installation
 Run `install.sh`
-Make *.sh files executable: `chmod +x *.sh`
 
 # Configuration
 Edit `env_profile.json` file to match your setup
@@ -20,11 +19,11 @@ You can run the script by calling python script `sdfwapi.py` directly or by usin
 The python script expects to get 2 arguments: `.json` file and operation `create` or `delete`.
 
 Running the scripts: 
-1. `step5_<>`  - this creates SGs and IDS profiles and rules
+1. `step5<>`  - this creates SGs and IDS profiles and rules
 
 2. `step9.1<>` - this creates Environment isolation DFW policy (Environment category)
 
-3. `step9.2<>` - this creates microsegmentation DFW policy (Application category)
+3. `step9.2<>` - this creates microsegmentation DFW policy (Application category). Default L3 policy rule is set to "Drop".
 
 
 # Cleanup
