@@ -1,5 +1,3 @@
 #!/bin/bash
 
-python get-pip.py
-pip install requests
-
+pip3 install requests
