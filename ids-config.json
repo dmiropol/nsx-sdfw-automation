@@ -1,13 +1,14 @@
 {
-    "cluster-configs": [
-        {
-            "ids_enabled": true,
-            "cluster": {
-                "target_type": "cluster"
-            },
-            "resource_type": "IdsClusterConfig",
-            "id": " Cluster1 ",
-            "display_name": " Cluster1 "
-        }
-    ]
+  "ids-cluster-configs": [
+    {
+      "ids_enabled": true,
+      "cluster": {
+        "target_type": "cluster",
+        "target_id": "6715b8d0-b140-4c0e-94fc-6837a616b409:domain-c7001"
+      },
+      "resource_type": "IdsClusterConfig",
+      "id": "6715b8d0-b140-4c0e-94fc-6837a616b409:domain-c7001",
+      "display_name": "Cluster1"
+    }
+  ]
 }
