@@ -1,33 +1,33 @@
 {
-    "ids-profiles": [
+  "ids-profiles": [
+    {
+      "severities": [
         {
-            "severities": [
-                {
-                    "severity": "CRITICAL"
-                },
-                {
-                    "severity": "HIGH"
-                }
-            ],
-            "resource_type": "IdsProfile",
-            "id": "Development",
-            "display_name": "Development"
+          "severity": "CRITICAL"
         },
         {
-            "severities": [
-                {
-                    "severity": "CRITICAL"
-                },
-                {
-                    "severity": "HIGH"
-                },
-                {
-                    "severity": "MEDIUM"
-                }
-            ],
-            "resource_type": "IdsProfile",
-            "id": "Production",
-            "display_name": "Production"
+          "severity": "HIGH"
         }
-    ]
+      ],
+      "resource_type": "IdsProfile",
+      "id": "Development",
+      "display_name": "Development"
+    },
+    {
+      "severities": [
+        {
+          "severity": "CRITICAL"
+        },
+        {
+          "severity": "HIGH"
+        },
+        {
+          "severity": "MEDIUM"
+        }
+      ],
+      "resource_type": "IdsProfile",
+      "id": "Production",
+      "display_name": "Production"
+    }
+  ]
 }

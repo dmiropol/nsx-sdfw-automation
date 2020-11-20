@@ -1,14 +1,14 @@
 {
-    "ids-cluster-config": [
-        {
-            "ids_enabled": true,
-            "cluster": {
-                "target_type": "cluster",
-                "target_id": ""
-            },
-            "resource_type": "IdsClusterConfig",
-            "id": "",
-            "display_name": "Cluster"
-        }
-    ]
+  "ids-cluster-config": [
+    {
+      "ids_enabled": true,
+      "cluster": {
+        "target_type": "cluster",
+        "target_id": ""
+      },
+      "resource_type": "IdsClusterConfig",
+      "id": "",
+      "display_name": "Cluster"
+    }
+  ]
 }
