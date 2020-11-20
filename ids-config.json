@@ -1,0 +1,13 @@
+{
+    "cluster-configs": [
+        {
+            "ids_enabled": true,
+            "cluster": {
+                "target_type": "cluster"
+            },
+            "resource_type": "IdsClusterConfig",
+            "id": " Cluster1 ",
+            "display_name": " Cluster1 "
+        }
+    ]
+}

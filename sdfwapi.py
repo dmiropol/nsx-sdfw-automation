@@ -87,6 +87,8 @@ class mainObj():
                     url = self.nsxmgr + infra + '/domains/default/security-policies/' + id
                 elif element == 'ids-profiles':
                     url = self.nsxmgr + infra + '/settings/firewall/security/intrusion-services/profiles/' + id
+                elif element == 'ids-cluster-configs':
+                    url = self.nsxmgr + infra + '/settings/firewall/security/intrusion-services/cluster-configs/' + id
                 elif element == 'ids-rules':
                     url = self.nsxmgr + infra + '/domains/default/intrusion-service-policies/' + id
                 else:
@@ -100,15 +102,17 @@ class mainObj():
         elif operation == 'create':
             response = requests.patch(url, verify=False, auth=HTTPBasicAuth(self.nsx_user, self.nsx_password),
                                       json=body)
-        else:
+        elif operation == 'delete':
             response = requests.delete(url, verify=False, auth=HTTPBasicAuth(self.nsx_user, self.nsx_password))
-        if response.status_code == 200:
-            if len(response.text) == 0:
-                print(operation, 'operation on', body.get('display_name'), 'completed successfully.')
+            if response.status_code == 200:
+                if len(response.text) == 0:
+                    print(operation, 'operation on', body.get('display_name'), 'completed successfully.')
+                else:
+                    print(response.text)
             else:
-                print(response.text)
+                print('Got error:', response.text)
         else:
-            print('Got error:', response.text)
+            raise GoTo(message='Invalid operation ' + operation, errno=4)
 
 
 def main(scriptName, args_list):
