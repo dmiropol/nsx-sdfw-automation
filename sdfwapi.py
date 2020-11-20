@@ -53,9 +53,9 @@ class mainObj():
         url = self.nsxmgr + '/policy/api/v1/infra/'
         response = requests.get(url, verify=False, auth=HTTPBasicAuth(self.nsx_user, self.nsx_password))
         if response:
-            #json_object = json.loads(response.text)
+            # json_object = json.loads(response.text)
             print('Successfully connected to:', self.nsxmgr + '.')
-            #print(json.dumps(json_object, indent=2))
+            # print(json.dumps(json_object, indent=2))
         else:
             print(response.text)
             raise GoTo(message='Got Error connecting to: ' + url, errno=1)
@@ -87,14 +87,32 @@ class mainObj():
                     url = self.nsxmgr + infra + '/domains/default/security-policies/' + id
                 elif element == 'ids-profiles':
                     url = self.nsxmgr + infra + '/settings/firewall/security/intrusion-services/profiles/' + id
-                elif element == 'ids-cluster-configs':
-                    url = self.nsxmgr + infra + '/settings/firewall/security/intrusion-services/cluster-configs/' + id
+                elif element == 'ids-cluster-config':
+                    url = self.nsxmgr + infra + '/settings/firewall/security/intrusion-services/cluster-configs/'
+                    cluster_id = self.getCluster_id(url)
+                    item['id'] = cluster_id
+                    item['cluster']['target_id'] = cluster_id
+                    url = self.nsxmgr + infra + '/settings/firewall/security/intrusion-services/cluster-configs/' + cluster_id
                 elif element == 'ids-rules':
                     url = self.nsxmgr + infra + '/domains/default/intrusion-service-policies/' + id
                 else:
                     raise GoTo(message='Invalid json file', errno=3)
 
                 self.send_request(operation, url, body=item)
+
+    def getCluster_id(self, url):
+        response = requests.get(url, verify=False, auth=HTTPBasicAuth(self.nsx_user, self.nsx_password))
+        if len(response.text) == 0:
+            raise GoTo(message='Could not get cluster ID', errno=7)
+        else:
+            # print('Got reesponse:\n' + response.text)
+            try:
+                cluster_id = response.json().get('results')[0].get('id')
+                #print('Got cluster ID: ' + cluster_id)
+                return (cluster_id)
+            except Exception as err:
+                print('Critical error parsing json output: {0}'.format(err))
+                raise GoTo(message='Unable to get Cluster_ID', errno=9)
 
     def send_request(self, operation, url, body):
         if operation == 'list':
@@ -104,15 +122,17 @@ class mainObj():
                                       json=body)
         elif operation == 'delete':
             response = requests.delete(url, verify=False, auth=HTTPBasicAuth(self.nsx_user, self.nsx_password))
-            if response.status_code == 200:
-                if len(response.text) == 0:
-                    print(operation, 'operation on', body.get('display_name'), 'completed successfully.')
-                else:
-                    print(response.text)
-            else:
-                print('Got error:', response.text)
         else:
             raise GoTo(message='Invalid operation ' + operation, errno=4)
+        #process response
+        if response.status_code == 200:
+            if len(response.text) == 0:
+                print(operation, 'operation on', body.get('display_name'), 'completed successfully.')
+            else:
+                print(response.text)
+        else:
+            print('Got error:', response.text)
+
 
 
 def main(scriptName, args_list):
