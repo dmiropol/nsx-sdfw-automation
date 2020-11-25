@@ -93,6 +93,8 @@ class mainObj():
                     item['id'] = cluster_id
                     item['cluster']['target_id'] = cluster_id
                     url = self.nsxmgr + infra + '/settings/firewall/security/intrusion-services/cluster-configs/' + cluster_id
+                elif element == 'ips-signatures':
+                    url = self.nsxmgr + infra + '/settings/firewall/security/intrusion-services/global-signatures/' + id
                 elif element == 'ids-rules':
                     url = self.nsxmgr + infra + '/domains/default/intrusion-service-policies/' + id
                 else:
