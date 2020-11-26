@@ -67,11 +67,16 @@ class mainObj():
         with open(dfw_profile, 'r') as fp:
             dfw_template = json.load(fp)
         if type(dfw_template) == dict:
-            self.process_item(dfw_template, operation)
+            if len(args) > 2:
+                override_json = json.loads(args[2])
+                self.process_item(dfw_template, operation, override_json)
+            else:
+                self.process_item(dfw_template, operation)
         else:
             raise GoTo(message='Invalid json file', errno=3)
 
-    def process_item(self, dfw_template, operation):
+    def process_item(self, dfw_template, operation, override_json={}):
+
         infra = '/policy/api/v1/infra'
         element = next(iter(dfw_template))
         for item in dfw_template.get(element):
@@ -100,6 +105,11 @@ class mainObj():
                 else:
                     raise GoTo(message='Invalid json file', errno=3)
 
+                if override_json != {}:
+                    key = list(override_json.keys())[0]
+                    value = override_json[key]
+                    item[key] = value
+                    # print('Using values from override input: "' + key + '":"' + value + '"')
                 self.send_request(operation, url, body=item)
 
     def getCluster_id(self, url):
@@ -107,7 +117,6 @@ class mainObj():
         if len(response.text) == 0:
             raise GoTo(message='Could not get cluster ID', errno=7)
         else:
-            # print('Got reesponse:\n' + response.text)
             try:
                 cluster_id = response.json().get('results')[0].get('id')
                 #print('Got cluster ID: ' + cluster_id)
@@ -117,6 +126,7 @@ class mainObj():
                 raise GoTo(message='Unable to get Cluster_ID', errno=9)
 
     def send_request(self, operation, url, body):
+        # print('Sending ' + operation + ' operation ' + 'to ' + url + ' with body:\n' + json.dumps(body, indent=2))
         if operation == 'list':
             response = requests.get(url, verify=False, auth=HTTPBasicAuth(self.nsx_user, self.nsx_password))
         elif operation == 'create':
