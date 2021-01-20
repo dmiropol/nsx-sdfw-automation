@@ -18,12 +18,14 @@ Edit other `*.json` files to match your setup
 You can run the script by calling python script `sdfwapi.py` directly or by using prebuilt bash script files.
 The python script expects to get 2 arguments: `.json` file and operation `create` or `delete`.
 
-Running the scripts: 
+Running the 3.0 scripts: 
 1. `step5<>`  - this creates SGs and IDS profiles and rules
-
 2. `step9.1<>` - this creates Environment isolation DFW policy (Environment category)
-
 3. `step9.2<>` - this creates microsegmentation DFW policy (Application category). Default L3 policy rule is set to "Drop".
+
+Running the 3.1 scripts: 
+1. `step5<>`  - this creates SGs and IDS profiles and rules
+2. `3.1/step8_ips.sh` - prevent attach configuration
 
 
 # Cleanup

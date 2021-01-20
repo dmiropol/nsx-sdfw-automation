@@ -1,0 +1,60 @@
+{
+  "groups": [
+    {
+      "expression": [
+        {
+          "member_type": "VirtualMachine",
+          "key": "Tag",
+          "operator": "EQUALS",
+          "value": "Environment|Development",
+          "resource_type": "Condition"
+        }
+      ],
+      "resource_type": "Group",
+      "id": "Development_Apps",
+      "display_name": "Development Apps"
+    },
+    {
+      "expression": [
+        {
+          "member_type": "VirtualMachine",
+          "key": "Tag",
+          "operator": "EQUALS",
+          "value": "Environment|Production",
+          "resource_type": "Condition"
+        }
+      ],
+      "resource_type": "Group",
+      "id": "Production_Apps",
+      "display_name": "Production Apps"
+    },
+    {
+      "expression": [
+          {
+              "member_type": "VirtualMachine",
+              "key": "Tag",
+              "operator": "EQUALS",
+              "value": "Tier|Web-Tier",
+              "resource_type": "Condition"
+          }
+      ],
+      "resource_type": "Group",
+      "id": "Web-Tier",
+      "display_name": "Web-Tier"
+    },
+    {
+      "expression": [
+          {
+              "member_type": "VirtualMachine",
+              "key": "Tag",
+              "operator": "EQUALS",
+              "value": "Tier|App-Tier",
+              "resource_type": "Condition"
+          }
+      ],
+      "resource_type": "Group",
+      "id": "App-Tier",
+      "display_name": "App-Tier"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "env": {
+    "nsxmgr": "https://192.168.110.201",
+    "nsx_user": "admin",
+    "nsx_password": "VMware1!VMware1!"
+  }
+}
