@@ -24,8 +24,8 @@ Running the 3.0 scripts:
 3. `step9.2<>` - this creates microsegmentation DFW policy (Application category). Default L3 policy rule is set to "Drop".
 
 Running the 3.1 scripts: 
-1. `step5<>`  - this creates SGs and IDS profiles and rules
-2. `3.1/step8_ips.sh` - prevent attach configuration
+1. `step5<>.sh`  - this creates SGs and IDS profiles and rules
+2. `step8_ips.sh` - this changes configuration of rules and signatures to enforce the action
 
 
 # Cleanup
