@@ -105,10 +105,12 @@ class mainObj():
                 else:
                     raise GoTo(message='Invalid json file', errno=3)
 
+                # override action in rules array
                 if override_json != {}:
                     key = list(override_json.keys())[0]
                     value = override_json[key]
-                    item[key] = value
+                    for i in item['rules']:
+                        i[key] = value
                     # print('Using values from override input: "' + key + '":"' + value + '"')
                 self.send_request(operation, url, body=item)
 
