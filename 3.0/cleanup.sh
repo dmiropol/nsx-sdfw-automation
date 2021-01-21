@@ -10,6 +10,5 @@ python3 sdfwapi.py dfw_default_policy-ALLOW.json create
 echo "Cleaning up IDS/IPS..."
 python3 sdfwapi.py ids-rules.json delete
 python3 sdfwapi.py ids-profiles.json delete
-python3 sdfwapi.py ips-signatures.json create {\"action\":\"ALERT\"}
 
 echo 'All done!'

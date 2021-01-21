@@ -1,6 +1,6 @@
 {
   "env": {
-    "nsxmgr": "https://192.168.110.201",
+    "nsxmgr": "https://pov-nsx.corp.local",
     "nsx_user": "admin",
     "nsx_password": "VMware1!VMware1!"
   }
