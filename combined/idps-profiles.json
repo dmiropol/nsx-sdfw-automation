@@ -1,0 +1,44 @@
+{
+    "ids-profiles": [
+        {
+            "profile_severity": [
+                "HIGH",
+                "MEDIUM",
+                "LOW",
+                "CRITICAL"
+            ],
+            "criteria": [
+                {
+                    "filter_name": "ATTACK_TARGET",
+                    "filter_value": [
+                        "Web_Server"
+                    ],
+                    "resource_type": "IdsProfileFilterCriteria"
+                }
+            ],
+            "resource_type": "IdsProfile",
+            "id": "Web-FrontEnd",
+            "display_name": "Web-FrontEnd"
+        },
+        {
+            "profile_severity": [
+                "HIGH",
+                "MEDIUM",
+                "LOW",
+                "CRITICAL"
+            ],
+            "criteria": [
+                {
+                    "filter_name": "PRODUCT_AFFECTED",
+                    "filter_value": [
+                        "apache_couchdb"
+                    ],
+                    "resource_type": "IdsProfileFilterCriteria"
+                }
+            ],
+            "resource_type": "IdsProfile",
+            "id": "Databases",
+            "display_name": "Databases"
+        }
+    ]
+}

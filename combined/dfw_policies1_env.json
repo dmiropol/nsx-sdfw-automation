@@ -1,0 +1,59 @@
+{
+  "security-policies": [
+    {
+      "rules": [
+        {
+          "action": "DROP",
+          "resource_type": "Rule",
+          "id": "Dev-Prod_Isolation",
+          "display_name": "Dev-Prod Isolation",
+          "source_groups": [
+            "/infra/domains/default/groups/Development_Apps"
+          ],
+          "destination_groups": [
+            "/infra/domains/default/groups/Production_Apps"
+          ],
+          "services": [
+            "ANY"
+          ],
+          "profiles": [
+            "ANY"
+          ],
+          "scope": [
+            "/infra/domains/default/groups/Development_Apps",
+            "/infra/domains/default/groups/Production_Apps"
+          ]
+        },
+        {
+          "action": "DROP",
+          "resource_type": "Rule",
+          "id": "Prod-Dev_Isolation",
+          "display_name": "Prod-Dev Isolation",
+          "source_groups": [
+            "/infra/domains/default/groups/Production_Apps"
+          ],
+          "destination_groups": [
+            "/infra/domains/default/groups/Development_Apps"
+          ],
+          "services": [
+            "ANY"
+          ],
+          "profiles": [
+            "ANY"
+          ],
+          "scope": [
+            "/infra/domains/default/groups/Development_Apps",
+            "/infra/domains/default/groups/Production_Apps"
+          ]
+        }
+      ],
+      "resource_type": "SecurityPolicy",
+      "id": "Envronment_Isolation",
+      "display_name": "Envronment Isolation",
+      "category": "Environment",
+      "scope": [
+        "ANY"
+      ]
+    }
+  ]
+}

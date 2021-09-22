@@ -1,0 +1,152 @@
+{
+  "security-policies": [
+    {
+      "resource_type": "SecurityPolicy",
+      "id": "App1_microseg",
+      "display_name": "App1 microseg",
+      "category": "Application",
+      "scope": [
+        "ANY"
+      ],
+      "rules": [
+        {
+          "action": "ALLOW",
+          "resource_type": "Rule",
+          "id": "web-tier_access",
+          "display_name": "web-tier access",
+          "source_groups": [
+            "ANY"
+          ],
+          "destination_groups": [
+            "/infra/domains/default/groups/App1-Web"
+          ],
+          "services": [
+            "ANY"
+          ],
+          "service_entries": [
+            {
+              "l4_protocol": "TCP",
+              "destination_ports": [
+                "8080"
+              ],
+              "resource_type": "L4PortSetServiceEntry"
+            }
+          ],
+          "profiles": [
+            "/infra/context-profiles/HTTP"
+          ],
+          "logged": false,
+          "scope": [
+            "/infra/domains/default/groups/App1-Web"
+          ]
+        },
+        {
+          "action": "ALLOW",
+          "resource_type": "Rule",
+          "id": "app-tier_access",
+          "display_name": "app-tier access",
+          "source_groups": [
+            "/infra/domains/default/groups/App1-Web"
+          ],
+          "destination_groups": [
+            "/infra/domains/default/groups/App1-App"
+          ],
+          "services": [
+            "ANY"
+          ],
+          "service_entries": [
+            {
+              "l4_protocol": "TCP",
+              "destination_ports": [
+                "5984"
+              ],
+              "resource_type": "L4PortSetServiceEntry"
+            }
+          ],
+          "profiles": [
+            "ANY"
+          ],
+          "logged": false,
+          "scope": [
+            "/infra/domains/default/groups/App1-App",
+            "/infra/domains/default/groups/App1-Web"
+          ]
+        }
+      ]
+    },
+    {
+      "resource_type": "SecurityPolicy",
+      "id": "App2_microseg",
+      "display_name": "App2 microseg",
+      "category": "Application",
+      "scope": [
+        "ANY"
+      ],
+      "rules": [
+        {
+          "action": "ALLOW",
+          "resource_type": "Rule",
+          "id": "web-tier_access",
+          "display_name": "web-tier access",
+          "source_groups": [
+            "ANY"
+          ],
+          "destination_groups": [
+            "/infra/domains/default/groups/App2-Web"
+          ],
+          "services": [
+            "ANY"
+          ],
+          "service_entries": [
+            {
+              "l4_protocol": "TCP",
+              "destination_ports": [
+                "8080"
+              ],
+              "resource_type": "L4PortSetServiceEntry"
+            }
+          ],
+          "profiles": [
+            "/infra/context-profiles/HTTP"
+          ],
+          "logged": false,
+          "scope": [
+            "/infra/domains/default/groups/App2-Web"
+          ]
+        },
+        {
+          "action": "ALLOW",
+          "resource_type": "Rule",
+          "id": "app-tier_access",
+          "display_name": "app-tier access",
+          "source_groups": [
+            "/infra/domains/default/groups/App2-Web"
+          ],
+          "destination_groups": [
+            "/infra/domains/default/groups/App2-App"
+          ],
+          "services": [
+            "ANY"
+          ],
+          "service_entries": [
+            {
+              "l4_protocol": "TCP",
+              "destination_ports": [
+                "5984"
+              ],
+              "resource_type": "L4PortSetServiceEntry"
+            }
+          ],
+          "profiles": [
+            "ANY"
+          ],
+          "logged": false,
+          "scope": [
+            "/infra/domains/default/groups/App2-App",
+            "/infra/domains/default/groups/App2-Web"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+    "ids-rules": [
+        {
+            "rules": [
+                {
+                    "action": "DETECT",
+                    "ids_profiles": [
+                        "/infra/settings/firewall/security/intrusion-services/profiles/Databases"
+                    ],
+                    "resource_type": "IdsRule",
+                    "id": "App-Tier_Policy",
+                    "display_name": "App-Tier Policy",
+                    "source_groups": [
+                        "ANY"
+                    ],
+                    "destination_groups": [
+                        "ANY"
+                    ],
+                    "services": [
+                        "ANY"
+                    ],
+                    "logged": false,
+                    "scope": [
+                        "/infra/domains/default/groups/App-Tier"
+                    ],
+                    "disabled": false
+                },
+                {
+                    "action": "DETECT",
+                    "ids_profiles": [
+                        "/infra/settings/firewall/security/intrusion-services/profiles/Web-FrontEnd"
+                    ],
+                    "resource_type": "IdsRule",
+                    "id": "Web-Tier_Policy",
+                    "display_name": "Web-Tier Policy",
+                    "source_groups": [
+                        "ANY"
+                    ],
+                    "destination_groups": [
+                        "ANY"
+                    ],
+                    "services": [
+                        "ANY"
+                    ],
+                    "logged": false,
+                    "scope": [
+                        "/infra/domains/default/groups/Web-Tier"
+                    ],
+                    "disabled": false
+                }
+            ],
+            "resource_type": "IdsSecurityPolicy",
+            "id": "NSX_IDPS_Policy",
+            "display_name": "NSX IDPS Policy"
+        }
+    ]
+}
